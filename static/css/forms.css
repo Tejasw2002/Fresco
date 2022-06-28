@@ -1,0 +1,104 @@
+form{
+    margin:auto;
+    width: 50vw;
+    padding: 2rem;
+    display: grid;
+    column-gap: 2.5rem;
+    row-gap: 1rem;
+}
+
+form *{
+    font-size: 2rem;
+}
+
+h1{
+  text-align: center;
+  font-size: 4rem;
+}
+
+.field
+{
+    display: inline-block;
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.title{
+    margin-bottom: 1rem;
+}
+
+button{
+    border-radius: 3rem;
+    border: 2px solid black;
+    padding: 0.4rem;
+    margin-left: 1rem;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+input, select{
+    margin-right: 0.1rem;
+    border-bottom: 1px solid black;
+}
+
+.content{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.content select, .content input{
+  flex-grow: 10;
+}
+
+.content .icon{
+  flex-grow: 0.1;
+  margin-right: 1rem;
+}
+
+.content button{
+  flex-grow: 0.2;
+  background-color: white;
+}
+
+.btn-content{
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 3rem;
+  padding: 1rem;
+}
+
+.btn-content i{
+  font-size: 2.5rem;
+}
+
+.btn{
+  border: none;
+  background-color: white;
+}
+
+i{
+  font-size: 2.5rem;
+}
+.message{
+  margin-top: 0.4rem;
+  margin-left: 4.4rem;
+  font-size: 1.4rem;
+  color: red;
+}
+
+.icon, h1{
+  color: green;
+}
+
+.btn-content{
+  border-color: green;
+}

@@ -1,0 +1,214 @@
+@font-face {
+  font-family: 'icomoon';
+  src:
+    url('../fonts/icomoon.ttf?t9b5yw') format('truetype'),
+    url('../fonts/icomoon.woff?t9b5yw') format('woff'),
+    url('../fonts/icomoon.svg?t9b5yw#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  display: inline-block;
+  width: 1.25em;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-logo:before {
+  content: "\e914";
+}
+
+.icon-phone:before {
+  content: "\e900";
+}
+.icon-minus:before {
+  content: "\e901";
+}
+.icon-delete:before {
+  content: "\e902";
+}
+.icon-add:before {
+  content: "\e903";
+}
+.icon-star:before {
+  content: "\e904";
+}
+.icon-pdf:before {
+  content: "\e905";
+}
+.icon-search:before {
+  content: "\e906";
+}
+.icon-bag:before {
+  content: "\e907";
+}
+.icon-heart:before {
+  content: "\e908";
+}
+.icon-help:before {
+  content: "\e909";
+}
+.icon-signout:before {
+  content: "\e90a";
+}
+.icon-signup:before {
+  content: "\e90b";
+}
+.icon-profile:before {
+  content: "\e90c";
+}
+.icon-signin:before {
+  content: "\e90d";
+}
+.icon-hide:before {
+  content: "\e90e";
+}
+.icon-show:before {
+  content: "\e90f";
+}
+.icon-email:before {
+  content: "\e910";
+}
+.icon-github:before {
+  content: "\e911";
+}
+.icon-linkedin:before {
+  content: "\e912";
+}
+.icon-home:before {
+  content: "\e913";
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+:root{
+  --green: #28a745;
+  --yellow: #ffc107;
+  --blue: #007bff;
+  --red: #dc3545;
+}
+
+html{
+    font-size: 62.5%;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    border: none;
+    outline: none;
+}
+body{
+    min-height: 100vh;
+}
+
+footer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+    padding: 1rem;
+}
+
+ul{
+  display: flex;
+  justify-content: center;
+}
+
+ul li{
+  list-style: none;
+}
+
+footer div{
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+ul li i{
+  font-size: 3rem;
+  color: grey;
+}
+
+ul li i:hover{
+  color: #c9bfbf;
+}
+
+footer{
+  padding-top: 3rem;
+  position: sticky;
+  top: 100vh;
+}
+
+nav .icon-logo, nav span{
+    font-size: 4rem;
+    color: green;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+
+nav ul li{
+    margin-right: 1rem;
+}
+
+.alert{
+  color: #721c24;
+  background-color: #f8d7da;
+  padding: 2rem;
+  margin: 1rem;
+  border: 1px solid #f5c6cb;
+  border-radius: 1rem;
+}
+
+.card{
+  width: 15vw;
+  height: 35vh;
+  border: 1px solid black;
+  padding: 0.5rem;
+  padding-top: 0;
+  display: flex;
+  margin: 1rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card .image{
+  height: 60%;
+  width: 100%;
+}
+
+
+.card .form{
+  height: 20%;
+  background-color: green;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.card .form i{
+  font-size: 1.7rem;
+}
+
+.card .info{
+  display: flex;
+  justify-content: space-between
+}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block style %}
+<style>
+    h1{
+        font-size: 10rem;
+        height: 100%;
+        color: green;
+        text-align: center;
+        padding: 10rem;
+    }
+</style>
+{% endblock %}
+{% block main %}
+{% from "macros.html" import formField, dismissableAlert %}
+<h1>404 <br> Page Not Found</h1>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block style%}
+<link rel="stylesheet" href='../static/css/forms.css'>
+<style>
+    form{
+        grid-template-rows: repeat(3, auto);
+        grid-template-columns: repeat (4, auto);
+        grid-template-areas:    'email email email email'
+                                'pwd pwd pwd toggle'
+                                'login login signup signup';
+    }
+</style>
+{% endblock %}
+{% block main %}
+{% from "macros.html" import formField, dismissableAlert %}
+{% if error is defined %}
+        {{dismissableAlert(error)}}
+{% endif %}
+<h1>LOGIN</h1>
+<form action="/login" method="POST">
+        {{formField("icon-email", "Email", "email", "email", "")}}
+        {{formField("icon-email", "Password", "password", "pwd", "")}}
+        {{formField("icon-show", "Toggle", "button", "toggle", "toggleVisibility(this)")}}
+        {{formField("icon-email", "Login", "button", "login", "")}}
+        {{formField("icon-email", "Create An Account", "button", "signup", "")}}
+</form>
+<script src="../static/js/script.js" async defer></script>
+<script>
+        document.getElementById("signup").onclick = function signUp()
+        {
+                event.preventDefault();
+                window.location.href = '/signup'
+        }
+        document.getElementById("login").onclick = function logIn()
+        {
+                fields = document.forms[0].querySelectorAll('input')
+                flag = true
+                for (i=0; i<2; i++)
+                {
+                        element = fields[i]
+                        console.log("OK")
+                        if (isEmpty(element))
+                        {
+                                getMessageElement(element).innerHTML = 'This field cannot be left empty'
+                                element.style.borderBottomColor = 'red'
+                                flag = false
+                        }
+                        else
+                        {
+                                getMessageElement(element).innerHTML = ''
+                                element.style.borderBottomColor = 'green'
+                        }
+                }
+                if (flag) document.forms[0].submit() 
+        }
+</script>
+{% endblock %}

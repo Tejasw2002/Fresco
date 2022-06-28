@@ -1,0 +1,87 @@
+{% macro navbar(signedIn) %}
+<nav>
+    <div class="brand">
+        <i class="icon-logo"></i>
+        <span>FRESCO</span>
+    </div>
+    <div class="list">
+        <ul class="sign-in-or-out">
+            <li><a href="/login"><i class="icon-signin"></i></a></li>
+            <li><a href="/signup"><i class="icon-signup"></i></a></li>
+        {% if signedIn %}
+            <li><a href="#"><i class="icon-signout"></i></a></li>
+            <li><a href="#"><i class="icon-basket"></i></a></li>
+            <li><a href="#"><i class="icon-profile"></i></a></li>
+        </ul>
+        <form action="" method="POST">
+            <input type="text" placeholder="Enter item to buy">
+            <button type="submit"><i class="icon-search"></i></button>
+        </form>
+        {% else %}
+    </ul>
+        {% endif %}
+    </div>
+</nav>
+{% endmacro %}
+
+{% macro footer() %}
+<footer>
+    <div> Developed By Tejashwa Agarwal </div>
+    <ul class="connect">
+        <li><a href="https://github.com/Tejasw2002"><i class="icon-github"></i></a></li>
+        <li><a href="https://www.linkedin.com/in/tejashwa-agarwal-3749971ba/"><i class="icon-linkedin"></i></a></li>
+        <li><a href="mailto:tejashwa.agarwal@gmail.com"><i class="icon-email"></i></a></li>
+    </ul>
+</footer>
+{% endmacro %}
+
+{% macro formField(iconClass, title, type, name, attributes) %}
+<div class="field" style="grid-area:{{name}}">
+    {% if type!='button' %}
+        <label for={{name}}>
+            <h2 class="title">{{title}}</h2>
+        </label>
+        <div class="content">
+            {% set oninput, onchange, onload = attributes['oninput'], attributes['onchange'], attributes['onload'] %}
+            <i class= "icon {{iconClass}}"></i>
+            {% if type != "select" %}
+            <input type="{{type}}" name="{{name}}" id="{{name}}" data-verified="false" oninput="{{oninput}}" onchange="{{onchange}}" />
+            {% else %}
+            <select type="{{type}}" name="{{name}}" id="{{name}}" data-verified="false" oninput="{{oninput}}" onchange="{{onchange}}" onload="{{onload}}">
+            </select>
+            {% endif %}
+        </div>
+        <div class="message"></div>
+    {% else %}
+        <div class="btn-content">
+            <i class= "icon {{iconClass}}"></i>
+            <button class="btn" type="{{type}}" name="{{name}}" id="{{name}}" onclick="{{attributes}}">{{title}}</button>
+        </div>
+    {% endif %}
+</div>
+{% endmacro %}
+
+{% macro dismissableAlert(message) %}
+<h2>
+    <div class="alert" onclick="dismiss(this)"> {{message}} </div>
+</h2>
+{% endmacro %}
+
+{% macro Card(product) %}
+<div class="card">
+    <img class="image" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=85,metadata=none,w=250,h=250/app/images/products/sliding_image/{{product.image}}" alt="">
+    <h3>{{product.name}}</h3>
+    <div class="info">
+        <span class="info">{{product.quantity}}&nbsp;{{product.unit}}</span>
+        <span class="price">&#8377;{{product.sellingPrice}}</span>
+    </div>
+    <div class="form">
+        <input type="number" name="{{product.id}}" id="{{product.id}}" maxlength="2">
+        <div class="buttons">
+            <i class="icon icon-logo"></i>
+            <i class="icon icon-logo"></i>
+            <i class="icon icon-logo"></i>
+        </div>
+    </div>
+</div>
+{% endmacro %}

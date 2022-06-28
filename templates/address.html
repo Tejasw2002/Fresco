@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block style%}
+<link rel="stylesheet" href='../static/css/forms.css'>
+<style>
+    form{
+        grid-template-columns: repeat(3, auto);
+        grid-template-rows: repeat(3, auto);
+        grid-template-areas:    'state city pin'
+                                'address address address'
+                                'type label add';
+    }
+    button{
+        width: auto;
+    }
+</style>
+{% endblock %}
+{% block main %}
+{% from "macros.html" import formField %}
+<h1>ADD ADDRESS</h1>
+<form action="/addAddress" method="POST">
+        {{formField("icon-email", "State", "select", "state", {"onchange":"loadCities(this)"})}}
+        {{formField("icon-email", "City", "select", "city", "")}}
+        {{formField("icon-email", "Pincode", "number", "pin", {"oninput":"validate(this)"})}}
+        {{formField("icon-email", "Address Details", "text", "address", {"oninput":"validate(this)"})}}
+        {{formField("icon-email", "Type", "select", "type", {"oninput":"changeLabel(this)"})}}
+        {{formField("icon-email", "Label", "text", "label", {"oninput":"validate(this)"})}}
+        {{formField("icon-email", "Add Address", "button", "add", "addAddress()")}}
+</form>
+<script src="../static/js/script.js"></script>
+<script>
+        window.onload = function(){
+                loadStates()
+                loadTypes()
+                document.getElementById('label').disabled = true; 
+        }
+
+        function loadTypes()
+        {
+                addressTypes = [{"value": "Home", "label": "HOME" }, {"value": "Office", "label": "OFFICE" }, {"value": "Custom", "label": "CUSTOM"}]
+                populate(document.getElementById('type'), addressTypes)
+        }
+
+        function loadStates(){ 
+                fetch("http://localhost:5000/getStates", { 
+                method: "GET",
+                headers: {"Accept": "*/*"}
+                }).then(function(response) {
+                return (response.text());
+                }).then(function(data){
+                states = JSON.parse(data)
+                populate(document.getElementById("state"), states, "id", "name")
+                })
+        }
+
+        function loadCities(element){
+                state = element.value
+                fetch("http://localhost:5000/getCities/"+state, { 
+                method: "GET",
+                headers: {"Accept": "*/*"}
+                }).then(function(response) {
+                return (response.text());
+                }).then(function(data){
+                cities = JSON.parse(data)
+                populate(document.getElementById("city"), cities, "id", "name")
+                })
+        }
+
+        function changeLabel(element){
+                label = document.getElementById("label")
+                label.value = element.value 
+                label.disabled = element.value=='Custom'? false: true; 
+        }
+
+        function addAddress(){
+                fields = ['city', 'pin', 'label', 'address']
+                fields.forEach((field)=>{
+                        validate(document.getElementById(field))
+                })
+        }
+        
+</script>
+{% endblock %}

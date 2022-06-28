@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Fresco | Signup {% endblock %}
+{% block style%}
+<link rel="stylesheet" href='../static/css/forms.css'>
+<style>
+        form{
+                grid-template-columns: repeat (3, auto);
+                grid-template-rows: repeat(8, auto);
+                grid-template-areas:    'email email sendotp'
+                                        'otp otp verifyotp'
+                                        'name name name'
+                                        'sex tel dob'
+                                        'pwd pwd toggle'
+                                        'cpwd cpwd cpwd' 
+                                        'signup signup login';
+        }
+</style>
+{% endblock %}
+{% block main %}
+{% from "macros.html" import formField %}
+<h1>CREATE AN ACCOUNT</h1>
+<form action="/createAccount" method="POST">
+        {{formField("icon-email", "Email", "email", "email", "")}}
+        {{formField("icon-email", "Send OTP", "button", "sendotp", "emailCheck()")}}
+        {{formField("icon-email", "OTP", "text", "otp", "")}}
+        {{formField("icon-email", "Verify Account", "button", "verifyotp", "otpCheck()")}}
+        {{formField("icon-profile", "Name", "text", "name", {"oninput":"validate(this)"})}}
+        {{formField("icon-email", "Gender", "select", "sex", {"oninput":"validate(this)", "onload":"populate(this)"})}}
+        {{formField("icon-email", "Phone Number", "tel", "tel", {"oninput":"validate(this)"})}}
+        {{formField("icon-email", "Date of Birth", "date", "dob", {"oninput":"validate(this)"})}}
+        {{formField("icon-email", "Password", "password", "pwd", {"oninput":"validate(this)", "onchange":"validate(document.getElementById('cpwd'))"})}}
+        {{formField("icon-show", "Toggle", "button", "toggle", "toggleVisibility(this)")}}
+        {{formField("icon-email", "Confirm Password", "password", "cpwd", {"oninput":"validate(this)"})}}
+        {{formField("icon-email", "Create My Account", "button", "signup", "signUp()")}}
+        {{formField("icon-email", "Login Instead", "button", "login", "signIn()")}}
+</form>
+<script src="../static/js/script.js" async defer></script>
+<script src="../static/js/signup.js" async defer></script>
+{% endblock %}

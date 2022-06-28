@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}FRESCO | Shop {% endblock %}
+{% block style %}
+<style>
+    main{
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: auto;
+}
+</style>
+{% endblock %}
+{% block main %}
+{% from "macros.html" import Card %}
+{{Card({
+  "category": 6,
+  "costPrice": 100,
+  "description": "Fresh Indian Kiwis, Vitamin C, Seasonal",
+  "id": 2,
+  "image": "394525a.jpg",
+  "name": "Kiwi",
+  "quantity": 500.0,
+  "sellingPrice": 125,
+  "stock": 50,
+  "unit": "g"
+})}}
+<script>
+  function loadProducts(){ 
+    fetch("http://localhost:5000/getProducts", { 
+    method: "GET",
+    headers: {"Accept": "*/*"}
+    }).then(function(response) {
+    return (response.text());
+    }).then(function(data){
+    products = JSON.parse(data)
+    for(i=0; i<products.length; i++) 
+      product = products[i]
+      document.querySelector('main').innerHTML+= `{{Card(product)}}`
+    })
+  }
+</script>
+{% endblock %}
